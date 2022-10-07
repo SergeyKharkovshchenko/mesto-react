@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function PopupWithFormComponent(props) {
+function PopupWithForm(props) {
 
   return (
 <>
@@ -21,5 +21,5 @@ function PopupWithFormComponent(props) {
 );
 }
 
-export default PopupWithFormComponent;
+export default PopupWithForm;
 

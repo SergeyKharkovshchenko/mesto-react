@@ -3,7 +3,7 @@ import avaPen from "../images/avatar_pen.svg";
 import api from "../utils/Api";
 import Card from "./Card";
 
-function Main(props) {
+function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
   const [userName, setUserName] = React.useState("");
   const [userDescription, setUserDescription] = React.useState("");
   const [userAvatar, setUserAvatar] = React.useState("");
@@ -32,18 +32,18 @@ function Main(props) {
       <section className="profile">
         <div className="profile__data">
           <button
-            onClick={props.onAddPlace}
+            onClick={onEditAvatar}
             className="profile__card"
             type="button"
           >
             <img
               src={`${userAvatar}`}
-              className="profile__avatar"
+              className="юзерпик профиля"
               alt="аватар"
             />
             <img
               src={avaPen}
-              alt="Profile Image"
+              alt="Изображение карандаша для редактирования"
               className="profile__hoverImg"
             />
           </button>
@@ -52,7 +52,7 @@ function Main(props) {
             <div className="profile__info-first-line">
               <h1 className="profile__title">{userName}</h1>
               <button
-                onClick={props.onEditProfile}
+                onClick={onEditProfile}
                 className="profile__edit-button"
                 type="button"
               >
@@ -64,7 +64,7 @@ function Main(props) {
         </div>
 
         <button
-          onClick={props.onAddPlace}
+          onClick={onAddPlace}
           className="profile__add-button"
           type="button"
         ></button>
@@ -78,7 +78,7 @@ function Main(props) {
             <Card
               card={card}
               onCardClick={(card) => {
-                props.onCardClick(card);
+                onCardClick(card);
               }}
             />
           ))}

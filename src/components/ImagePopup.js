@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 
-function ImagePopup(props) {
+function ImagePopup({card, onClose}) {
   return (
     <section
-      className={`popup image-popup ${props.card.name ? "popup_opened" : ""}`}
+      className={`popup image-popup ${card.name ? "popup_opened" : ""}`}
     >
       <div className="image-popup__container" novalidate>
         <button
-          onClick={props.onClose}
+          onClick={onClose}
           className="popup__close image-popup__close"
           type="button"
         ></button>
-        <img src={props.card.link} className="image-popup__foto" />
+        <img src={card.link} className="image-popup__foto" />
         <h2 className="image-popup__title"></h2>
       </div>
     </section>

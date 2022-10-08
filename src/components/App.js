@@ -8,9 +8,9 @@ import React, { useEffect, useState } from "react";
 
 function App() {
   const [isEditProfilePopupOpen, SetEditProfilePopupOpen] =
-    React.useState(false);
-  const [isAddPlacePopupOpen, SetAddPlacePopupOpen] = React.useState(false);
-  const [isEditAvatarPopupOpen, SetEditAvatarPopupOpen] = React.useState(false);
+    React.useState(null);
+  const [isAddPlacePopupOpen, SetAddPlacePopupOpen] = React.useState(null);
+  const [isEditAvatarPopupOpen, SetEditAvatarPopupOpen] = React.useState(null);
   const [selectedCard, setSelectedCard] = React.useState(false);
   
 
@@ -27,9 +27,9 @@ function App() {
   }
 
   function closeAllPopups(){
-    SetEditAvatarPopupOpen(false);
-    SetEditProfilePopupOpen(false);
-    SetAddPlacePopupOpen(false);
+    SetEditAvatarPopupOpen(null);
+    SetEditProfilePopupOpen(null);
+    SetAddPlacePopupOpen(null);
     setSelectedCard(false);
   }
 
@@ -51,6 +51,7 @@ function App() {
           isOpen={isEditProfilePopupOpen ? "popup_opened" : ""
           }
           onClose={closeAllPopups}
+          buttonText = "Сохранить"
         >
           <input
             name="name"
@@ -80,6 +81,7 @@ function App() {
           title="Новое место"
           isOpen={isAddPlacePopupOpen ? "popup_opened" : ""}
           onClose={closeAllPopups}
+          buttonText = "Создать"
         >
           <input
             type="text"
@@ -107,12 +109,14 @@ function App() {
           title="Вы уверены?"
           isOpen=""
           onClose={closeAllPopups}
+          buttonText = "Да"
         />
         <PopupWithFormComponent
           name="avatar"
           title="Обновить аватар"
           isOpen={isEditAvatarPopupOpen ? "popup_opened" : ""}
           onClose={closeAllPopups}
+          buttonText = "Сохранить"
         >
           <input
             type="url"

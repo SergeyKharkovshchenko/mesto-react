@@ -1,12 +1,17 @@
-# Training React JS project
+# Training React JS project / Тренировочный проект на Реакте
 
 
-**Description**
+**Description/Описание**
 
 Just some cards and user data handling.
 
-+ Features:
+
++ Features / Примененные технологии:
   + React
   + Async stuff
   + Adaptive
   + BEM
+  + Api
+
+Для сборки нужно выполнить следующую команду: serve -s build
+Для запуска проекта: npm start

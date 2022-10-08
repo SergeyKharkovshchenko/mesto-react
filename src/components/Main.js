@@ -38,7 +38,7 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
           >
             <img
               src={`${userAvatar}`}
-              className="юзерпик профиля"
+              className="profile__avatar"
               alt="аватар"
             />
             <img

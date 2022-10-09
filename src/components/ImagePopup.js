@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function ImagePopup({card, onClose}) {
   return (
     <section
-      className={`popup image-popup ${card.name ? "popup_opened" : ""}`}
+      className={`popup image-popup ${card ? "popup_opened" : ""}`}
     >
       <div className="image-popup__container" novalidate>
         <button
@@ -11,7 +11,7 @@ function ImagePopup({card, onClose}) {
           className="popup__close image-popup__close"
           type="button"
         ></button>
-        <img src={card.link} className="image-popup__foto" />
+        <img src={`${card ? card.link:""}`} className="image-popup__foto" />
         <h2 className="image-popup__title"></h2>
       </div>
     </section>

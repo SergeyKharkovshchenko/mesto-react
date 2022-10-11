@@ -12,6 +12,8 @@ Just some cards and user data handling.
   + Adaptive
   + BEM
   + Api
-
-Для сборки нужно выполнить следующую команду: serve -s build
-Для запуска проекта: npm start
+<br/> 
+Для сборки нужно выполнить следующую команду: serve -s build<br/> 
+To build a project please run this command: serve -s build<br/> 
+Для запуска проекта: npm start<br/> 
+To run a project: npm start<br/> 

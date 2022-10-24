@@ -1,25 +1,64 @@
-// function Card(props) 
-  function Card({card, onCardClick}) {  
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import React, { useContext, useEffect, useState } from "react";
 
-    const handleCardClick = () => {
-        onCardClick(card)
-      };
+function Card({ card, onCardClick, onCardDelete, onCardLike }) {
+  const currentUser = React.useContext(CurrentUserContext);
 
-    return (
-              <li className="element" id={card._id}> 
-                    <img src={card.link} 
-            onClick = {(e) => {handleCardClick(e)}}
-            className="element__foto" alt={`фото ${card.name}`} />
-                    <button className="element__thrashbin" type="button"> </button>
-                    <div className="element__bottom">
-                    <h2 className="element__title">{card.name}</h2>
-                    <div className="element__heart-and-counter">
-                        <button className="element__heart" type="button"></button>
-                        <p className="element__likescounter">{card.likes.length}</p>
-                    </div>
-                </div>
-                </li>
-    );
-  }
+  const isLiked = card.likes.some((i) => i._id === currentUser._id);
+  const isOwner = card.owner._id == currentUser._id;
 
-  export default Card;
+  const handleCardClick = () => {
+    onCardClick(card);
+  };
+
+  const handleCardDeleteClick = () => {
+    onCardDelete(card._id);
+  };
+
+  const handleCardLike = () => {
+    onCardLike(card);
+  };
+
+  return (
+    <li className="element" id={card._id}>
+      <img
+        src={card.link}
+        onClick={(e) => {
+          handleCardClick(e);
+        }}
+        className="element__foto"
+        alt={`фото ${card.name}`}
+      />
+      {isOwner && (
+        <button
+          className="element__thrashbin"
+          type="button"
+          onClick={(e) => {
+            handleCardDeleteClick(e);
+          }}
+        >
+          {" "}
+        </button>
+      )}
+      <div className="element__bottom">
+        <h2 className="element__title">{card.name}</h2>
+        <div className="element__heart-and-counter">
+          <button
+            className={
+              isLiked
+                ? "element__heart element__heart-color-black"
+                : "element__heart"
+            }
+            type="button"
+            onClick={(e) => {
+              handleCardLike(e);
+            }}
+          ></button>
+          <p className="element__likescounter">{card.likes.length}</p>
+        </div>
+      </div>
+    </li>
+  );
+}
+
+export default Card;

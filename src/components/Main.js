@@ -2,28 +2,22 @@ import React, { Component, useEffect, useState } from "react";
 import avaPen from "../images/avatar_pen.svg";
 import api from "../utils/Api";
 import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
-  const [userName, setUserName] = React.useState("");
-  const [userDescription, setUserDescription] = React.useState("");
-  const [userAvatar, setUserAvatar] = React.useState("");
-  const [cards, setCards] = React.useState([]);
+function Main({
+  onEditAvatar,
+  onAddPlace,
+  onEditProfile,
+  onCardClick,
+  cards,
+  onCardLike,
+  onCardDelete,
+}) {
+  // const [userName, setUserName] = React.useState("");
+  // const [userDescription, setUserDescription] = React.useState("");
+  // const [userAvatar, setUserAvatar] = React.useState("");
 
-  useEffect(() => {
-    api
-      .getUserAndCards()
-      .then((argument) => {
-        const [dataFromGetUserInfoPromis, dataFromGetInitialCardsPromise] =
-          argument;
-        setUserName(dataFromGetUserInfoPromis.name);
-        setUserDescription(dataFromGetUserInfoPromis.about);
-        setUserAvatar(dataFromGetUserInfoPromis.avatar);
-        setCards(dataFromGetInitialCardsPromise);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  });
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="main">
@@ -37,7 +31,7 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
             type="button"
           >
             <img
-              src={`${userAvatar}`}
+              src={`${currentUser.avatar}`}
               className="profile__avatar"
               alt="аватар"
             />
@@ -50,7 +44,7 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
 
           <div className="profile__profile-info">
             <div className="profile__info-first-line">
-              <h1 className="profile__title">{userName}</h1>
+              <h1 className="profile__title">{currentUser.name}</h1>
               <button
                 onClick={onEditProfile}
                 className="profile__edit-button"
@@ -59,7 +53,7 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
                 {" "}
               </button>
             </div>
-            <p className="profile__subtitle">{userDescription}</p>
+            <p className="profile__subtitle">{currentUser.about}</p>
           </div>
         </div>
 
@@ -79,6 +73,12 @@ function Main({onEditAvatar, onAddPlace, onEditProfile, onCardClick}) {
               card={card}
               onCardClick={(card) => {
                 onCardClick(card);
+              }}
+              onCardDelete={(card) => {
+                onCardDelete(card);
+              }}
+              onCardLike={(card) => {
+                onCardLike(card);
               }}
             />
           ))}

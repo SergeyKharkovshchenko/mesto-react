@@ -1,7 +1,7 @@
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import React, { useContext, useEffect, useState } from "react";
 
-function Card({ card, onCardClick, onCardDelete, onCardLike }) {
+function Card({ card, onCardClick, onCardDelete, onCardLike, key }) {
   const currentUser = React.useContext(CurrentUserContext);
 
   const isLiked = card.likes.some((i) => i._id === currentUser._id);
@@ -20,7 +20,7 @@ function Card({ card, onCardClick, onCardDelete, onCardLike }) {
   };
 
   return (
-    <li className="element" id={card._id} >
+    <li className="element" id={card._id} key={key}>
       <img
         src={card.link}
         onClick={(e) => {

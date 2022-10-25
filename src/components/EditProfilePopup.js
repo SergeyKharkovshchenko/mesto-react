@@ -43,27 +43,27 @@ function EditProfilePopup(props) {
       <input
         name="name"
         type="text"
-        id={`edit-name`}
-        className={`popup__field popup__field-for-name popup__field-for-name_type_edit`}
+        id="edit-name"
+        className="popup__field popup__field-for-name popup__field-for-name_type_edit"
         minLength={2}
         maxLength={40}
         required
-        placeholder={`Имя`}
+        placeholder="Имя"
         onChange={handleNameChange}
       />
-      <span className={`popup__error edit-name-error`}></span>
+      <span className="popup__error edit-name-error"></span>
       <input
         name="description"
         type="text"
-        id={`edit-job`}
-        className={`popup__field popup__field-for-job popup__field-for-job_type_edit`}
+        id="edit-job"
+        className="popup__field popup__field-for-job popup__field-for-job_type_edit"
         minLength={2}
         maxLength={200}
         required
         placeholder="Описание"
         onChange={handleDescriptionChange}
       />
-      <span className={`popup__error edit-job-error`}></span>
+      <span className="popup__error edit-job-error"></span>
     </PopupWithForm>
   );
 }

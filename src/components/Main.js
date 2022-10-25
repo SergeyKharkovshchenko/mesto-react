@@ -67,6 +67,7 @@ function Main({
         <ul className="elements">
           {cards.map((card) => (
             <Card
+              key={card._id}
               card={card}
               onCardClick={(card) => {
                 onCardClick(card);
@@ -77,7 +78,6 @@ function Main({
               onCardLike={(card) => {
                 onCardLike(card);
               }}
-              key={card._id}
             />
           ))}
         </ul>

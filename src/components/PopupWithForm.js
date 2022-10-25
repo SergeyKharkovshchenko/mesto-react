@@ -10,13 +10,14 @@ function PopupWithForm({
   onSubmit,
 }) {
   return (
-    <section className={`popup popup_${name} ${isOpen}`}>
+    // isOpen=
+    <section className={`popup popup_${name} ${isOpen ? "popup_opened" : ""}`}>
       <form
         className={`popup__container popup__form-${name}`}
         noValidate
         onSubmit={onSubmit}
       >
-        <fieldset className={`popup__set popup__set${name}`} name="AddForm">
+        <fieldset className={`popup__set popup__form-${name}`} name="AddForm">
           <button
             onClick={onClose}
             className={`popup__close popup__close_type_${name}`}

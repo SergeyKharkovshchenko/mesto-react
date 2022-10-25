@@ -29,7 +29,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  });
+    }, []);
 
   useEffect(() => {
     api
@@ -40,7 +40,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  });
+    }, []);
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
@@ -70,30 +70,35 @@ function App() {
   function handleUpdateUser(name, description) {
     api
       .setUserInfo(name, description)
-      .then((res) => setCurrentUser(res))
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
       .catch((err) => {
         console.log(err);
       });
-    closeAllPopups();
+    
   }
 
   function handleUpdateAvatar(link) {
     api
       .setUserAvatar(link)
       .then((res) => {
-        currentUser.avatar = res.link;
+        setCurrentUser(res);
+        closeAllPopups();
       })
       .catch((err) => {
         console.log(err);
       });
-    closeAllPopups();
   }
 
   function handleAddPlaceSubmit(name, link) {
     api
       .addMyCardToCloud(name, link)
-      .then(newCard => setCards([newCard, ...cards]))
-      .then (() => closeAllPopups())
+      .then(newCard => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+    })
       .catch((err) => {
         console.log(err);
       });

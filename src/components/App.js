@@ -11,9 +11,9 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import React, { useEffect, useState } from "react";
 
 function App() {
-  const [isEditProfilePopupOpen, SetEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, SetAddPlacePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, SetEditAvatarPopupOpen] = useState(false);
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState("");
   const [cards, setCards] = React.useState([]);
@@ -22,12 +22,9 @@ function App() {
     api
       .getUserAndCards()
       .then((argument) => {
-        const [dataFromGetUserInfoPromis, dataFromGetInitialCardsPromise] =
-          argument;
-        // setUserName(dataFromGetUserInfoPromis.name);
-        // setUserDescription(dataFromGetUserInfoPromis.about);
-        // setUserAvatar(dataFromGetUserInfoPromis.avatar);
-        setCards(dataFromGetInitialCardsPromise);
+        const [userData, cardData ] = argument;
+        setCards(cardData);
+        setCurrentUser(userData);
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +44,7 @@ function App() {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, !isLiked)
     .then((newCard) => {
@@ -96,28 +93,28 @@ function App() {
     api
       .addMyCardToCloud(name, link)
       .then(newCard => setCards([newCard, ...cards]))
+      .then (() => closeAllPopups())
       .catch((err) => {
         console.log(err);
       });
-    closeAllPopups();
   }
 
   function handleEditAvatarClick() {
-    SetEditAvatarPopupOpen(true);
+    setEditAvatarPopupOpen(true);
   }
 
   function handleEditProfileClick() {
-    SetEditProfilePopupOpen(true);
+    setEditProfilePopupOpen(true);
   }
 
   function handleAddPlaceClick() {
-    SetAddPlacePopupOpen(true);
+    setAddPlacePopupOpen(true);
   }
 
   function closeAllPopups() {
-    SetEditAvatarPopupOpen(false);
-    SetEditProfilePopupOpen(false);
-    SetAddPlacePopupOpen(false);
+    setEditAvatarPopupOpen(false);
+    setEditProfilePopupOpen(false);
+    setAddPlacePopupOpen(false);
     setSelectedCard(null);
   }
 

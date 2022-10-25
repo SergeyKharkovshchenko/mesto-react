@@ -20,6 +20,11 @@ function AddPlacePopup(props) {
         props.onAddPlace(name, link)
       } 
 
+      useEffect(() => {
+        setName('');
+        setLink('');
+      }, [props.isOpen]); 
+
     return (
 
         <PopupWithForm
@@ -33,25 +38,25 @@ function AddPlacePopup(props) {
           <input
             type="text"
             name="name"
-            id={`add-name`}
-            className={`popup__field popup__field-for-name popup__field-for-name_type_add`}
+            id="add-name"
+            className="popup__field popup__field-for-name popup__field-for-name_type_add"
             minLength={2}
             maxLength={30}
             required
             placeholder="Название"
             onChange = {handleNameChange}
           />
-          <span className={`popup__error add-name-error`}></span>
+          <span className="popup__error add-name-error"></span>
           <input
             type="url"
             name="link"
-            id={`add-job`}
-            className={`popup__field popup__field-for-job popup__field-for-job_type_add`}
+            id="add-job"
+            className="popup__field popup__field-for-job popup__field-for-job_type_add"
             required
             placeholder="Ссылка на картинку"
             onChange = {handleLinkChange}
           />
-          <span className={`popup__error add-job-error`}></span>
+          <span className="popup__error add-job-error"></span>
         </PopupWithForm>
 
 );

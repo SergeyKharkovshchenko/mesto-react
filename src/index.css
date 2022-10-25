@@ -1,5 +1,5 @@
-/* @import url(../vendor/normalize.css);
-@import url(../vendor/fonts/fonts.css); */
+/* @import url(../vendor/normalize.css); */
+@import url(./fonts/fonts.css);
 @import url(./blocks/page/page.css);
 @import url(./blocks/elements/elements.css);
 @import url(./blocks/element/element.css);
@@ -51,4 +51,3 @@
 @import url(./blocks/avatar-popup/__set/avatar-popup__set.css);
 @import url(./blocks/avatar-popup/__submit__button/avatar-popup__submit-button.css);
 @import url(./blocks/avatar-popup/__title/avatar-popup__title.css);
-@import url(./components/App.css);

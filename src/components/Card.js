@@ -20,7 +20,7 @@ function Card({ card, onCardClick, onCardDelete, onCardLike }) {
   };
 
   return (
-    <li className="element" id={card._id}>
+    <li className="element" id={card._id} >
       <img
         src={card.link}
         onClick={(e) => {

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 function ImagePopup({ card, onClose }) {
   return (
     <section className={`popup image-popup ${card ? "popup_opened" : ""}`}>
-      <div className="image-popup__container" novalidate>
+      <div className="image-popup__container" noValidate>
         <button
           onClick={onClose}
           className="popup__close image-popup__close"

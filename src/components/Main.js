@@ -13,9 +13,6 @@ function Main({
   onCardLike,
   onCardDelete,
 }) {
-  // const [userName, setUserName] = React.useState("");
-  // const [userDescription, setUserDescription] = React.useState("");
-  // const [userAvatar, setUserAvatar] = React.useState("");
 
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -80,6 +77,7 @@ function Main({
               onCardLike={(card) => {
                 onCardLike(card);
               }}
+              key={card._id}
             />
           ))}
         </ul>

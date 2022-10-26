@@ -44,6 +44,7 @@ function AddPlacePopup(props) {
             maxLength={30}
             required
             placeholder="Название"
+            value={name || ''}
             onChange = {handleNameChange}
           />
           <span className="popup__error add-name-error"></span>
@@ -54,6 +55,7 @@ function AddPlacePopup(props) {
             className="popup__field popup__field-for-job popup__field-for-job_type_add"
             required
             placeholder="Ссылка на картинку"
+            value={link || ''}
             onChange = {handleLinkChange}
           />
           <span className="popup__error add-job-error"></span>

@@ -10,7 +10,6 @@ function PopupWithForm({
   onSubmit,
 }) {
   return (
-    // isOpen=
     <section className={`popup popup_${name} ${isOpen ? "popup_opened" : ""}`}>
       <form
         className={`popup__container popup__form-${name}`}

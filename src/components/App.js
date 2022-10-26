@@ -21,8 +21,7 @@ function App() {
   useEffect(() => {
     api
       .getUserAndCards()
-      .then((argument) => {
-        const [userData, cardData ] = argument;
+      .then(([userData, cardData]) => {
         setCards(cardData);
         setCurrentUser(userData);
       })
@@ -34,8 +33,8 @@ function App() {
   useEffect(() => {
     api
       .getUserInfo()
-      .then((argument) => {
-        setCurrentUser(argument);
+      .then((userData) => { 
+        setCurrentUser(userData); 
       })
       .catch((err) => {
         console.log(err);
@@ -55,11 +54,11 @@ function App() {
     });
   }
 
-  const handleCardDelete = (id) => {
+  const handleCardDelete = (card) => {
     // используя методы массива, создаем новый массив карточек newCards, где не будет карточки, которую мы только что удалили
     api
-      .deleteCardFromCloud(id)
-      .then((card) => {
+      .deleteCardFromCloud(card._id)
+      .then(() => {
         setCards((cards) => cards.filter((c) => c._id !== card._id));
       })
       .catch((err) => {
@@ -134,7 +133,7 @@ function App() {
           onCardClick={(card) => setSelectedCard(card)}
           cards={cards}
           onCardLike={handleCardLike}
-          onCardDelete={(id) => handleCardDelete(id)}
+          onCardDelete={(card) => handleCardDelete(card)}
         />
         <Footer />
 

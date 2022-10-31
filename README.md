@@ -4,12 +4,10 @@ Project was created as new features test - based on React JS, async fetches, API
   + React
   + API
   + async requests
-  + grid, flex
-  + Adaptive
-  + BEM
+  + grid, flex, adaptive, BEM
   + Webpack
 
-# Features (in progress)
+# Features 
 
 * Click on User Picture opens popup. New picture (link) can be sent to server and will be reflected on page.
 * Click on small square with pen in the middle. It opens popup. New name and description can be sent to server and will be reflected on page.
